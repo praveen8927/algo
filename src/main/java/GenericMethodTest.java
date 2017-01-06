@@ -1,3 +1,6 @@
+import java.net.URI;
+import java.net.URISyntaxException;
+
 /**
  * Created by praveen.adlakha on 08/02/15.
  */
@@ -12,20 +15,20 @@ public class GenericMethodTest {
         System.out.println();
     }
 
-    public static void main( String args[] )
+    public static void main( String args[] ) throws URISyntaxException
     {
-        // Create arrays of Integer, Double and Character
-        Integer[] intArray = { 1, 2, 3, 4, 5 };
-        Double[] doubleArray = { 1.1, 2.2, 3.3, 4.4 };
-        Character[] charArray = { 'H', 'E', 'L', 'L', 'O' };
 
-        System.out.println( "Array integerArray contains:" );
-        printArray( intArray  ); // pass an Integer array
+        String path = "hdfs://10.14.118.114:8020/user/dataqa/";
+    //    path = "/user/dataqa/";
 
-        System.out.println( "\nArray doubleArray contains:" );
-        printArray( doubleArray ); // pass a Double array
+        URI abc = new URI(path);
+//        System.out.println( abc.getHost() + ":" + abc.getPort()  );
+        System.out.println( "Authority " +abc.getAuthority());
+//        System.out.println(abc.getQuery());
+        System.out.println(abc.getScheme());
+        System.out.println(abc.getSchemeSpecificPart());
+        System.out.println(abc.getPath());
+        System.out.println(abc.getScheme() + "://" + abc.getAuthority());
 
-        System.out.println( "\nArray characterArray contains:" );
-        printArray( charArray ); // pass a Character array
     }
 }
